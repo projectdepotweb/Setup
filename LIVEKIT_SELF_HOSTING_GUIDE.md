@@ -6,8 +6,8 @@ API31ed520e8df9d086
 LiveKit API secret:
 fdbd0520c6107651b6e910d4ef4e9ac7dd3197b0367aadc74f8f64408bb940eb
 
-read -p "LiveKit API key: " LK_API_KEY
-read -s -p "LiveKit API secret: " LK_API_SECRET
+read -p "LiveKit API key: " API31ed520e8df9d086
+read -s -p "LiveKit API secret: " fdbd0520c6107651b6e910d4ef4e9ac7dd3197b0367aadc74f8f64408bb940eb
 echo
 
 TOKEN_ONE=$(lk token create --api-key "$LK_API_KEY" --api-secret "$LK_API_SECRET" --join --room mbr-test-room --identity browser-one --valid-for 1h --token-only)
