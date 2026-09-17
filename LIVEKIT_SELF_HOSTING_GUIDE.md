@@ -3,6 +3,9 @@
 LiveKit API key:
 API31ed520e8df9d086
 
+cd /opt/livekit
+docker compose logs --since=2m --follow livekit
+
 LiveKit API secret:
 fdbd0520c6107651b6e910d4ef4e9ac7dd3197b0367aadc74f8f64408bb940eb
 
