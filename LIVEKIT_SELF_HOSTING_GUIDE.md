@@ -6,8 +6,8 @@ API31ed520e8df9d086
 LiveKit API secret:
 fdbd0520c6107651b6e910d4ef4e9ac7dd3197b0367aadc74f8f64408bb940eb
 
-echo "Key length: ${#LK_API_KEY}"
-echo "Secret length: ${#LK_API_SECRET}"
+TOKEN_NEW=$(lk token create --api-key "$LK_API_KEY" --api-secret "$LK_API_SECRET" --join --room mbr-test-room --identity browser-new --valid-for 2h --token-only)
+echo "$TOKEN_NEW"
 
 read -p "LiveKit API key: " 
 read -s -p "LiveKit API secret: "
