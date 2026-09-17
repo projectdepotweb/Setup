@@ -9,15 +9,19 @@ docker compose logs --since=2m --follow livekit
 LiveKit API secret:
 fdbd0520c6107651b6e910d4ef4e9ac7dd3197b0367aadc74f8f64408bb940eb
 
-lk token create --api-key "$LK_API_KEY" --api-secret "$LK_API_SECRET" --join --room mbr-test-room --identity "desktop-$(date +%s)" --valid-for 2h --token-only
+CRED_LINE=$(sudo awk '/^keys:/{getline; print; exit}' /opt/livekit/livekit.yaml)
 
-echo "$TOKEN_NEW"
+LK_API_KEY=$(printf '%s\n' "$CRED_LINE" | sed -E 's/^[[:space:]]*([^:]+):.*$/\1/')
 
-read -p "LiveKit API key: " 
-read -s -p "LiveKit API secret: "
-echo
+LK_API_SECRET=$(printf '%s\n' "$CRED_LINE" | sed -E 's/^[^:]+:[[:space:]]*"?([^"]*)"?[[:space:]]*$/\1/')
 
-TOKEN_ONE=$(lk token create --api-key "$LK_API_KEY" --api-secret "$LK_API_SECRET" --join --room mbr-test-room --identity browser-one --valid-for 1h --token-only)
+echo "Key length: ${#LK_API_KEY}; Secret length: ${#LK_API_SECRET}"
+
+lk room list --url wss://meet.mbrnetworking.org --api-key "$LK_API_KEY" --api-secret "$LK_API_SECRET"
+
+TOKEN_NEW=$(lk token create --api-key "$LK_API_KEY" --api-secret "$LK_API_SECRET" --join --room mbr-test-room --identity "desktop-$(date +%s)" --valid-for 2h --token-only)
+
+echo "https://meet.livekit.io/custom?liveKitUrl=wss://meet.mbrnetworking.org&token=$TOKEN_NEW"
 
 This guide builds a single-node, production-oriented LiveKit server on an Ubuntu 22.04 LTS virtual machine running under Hyper-V on a Windows 11 Pro host.
 
