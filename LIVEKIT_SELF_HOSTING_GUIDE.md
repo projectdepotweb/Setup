@@ -1,5 +1,11 @@
 # MBR Networking — Complete Self-Hosted LiveKit Setup Guide
 
+LiveKit API key:
+API31ed520e8df9d086
+
+LiveKit API secret:
+fdbd0520c6107651b6e910d4ef4e9ac7dd3197b0367aadc74f8f64408bb940eb
+
 This guide builds a single-node, production-oriented LiveKit server on an Ubuntu 22.04 LTS virtual machine running under Hyper-V on a Windows 11 Pro host.
 
 It is written for a beginner. Follow the sections in order and do not connect the MBR portal until the standalone LiveKit server passes all verification steps.
