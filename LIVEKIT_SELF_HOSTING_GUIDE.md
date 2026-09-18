@@ -5,6 +5,12 @@ API31ed520e8df9d086
 
 LiveKit API secret:
 fdbd0520c6107651b6e910d4ef4e9ac7dd3197b0367aadc74f8f64408bb940eb
+grep -nE '^(port:|rtc:|  use_external_ip:|  tcp_port:|  udp_port:|turn:|  enabled:)' /opt/livekit/livekit.yaml
+
+docker inspect livekit --format '{{range .Mounts}}{{println .Source "->" .Destination}}{{end}}'
+
+cd /opt/livekit
+docker compose logs --tail=200 livekit
 
 lk project add mbr-self-hosted `
   --url wss://meet.mbrnetworking.org `
